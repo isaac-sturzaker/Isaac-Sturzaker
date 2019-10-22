@@ -29,7 +29,7 @@ def count_down():
 
 def gamble_question(points):
     """Function that has gambilng code in it"""
-
+    
     #Random and Time Library
     import random
     import time
@@ -61,29 +61,33 @@ numbers then you will lose those points
             print("\nLets Begin")
             repeat = False
 
-        repeat = True
-        while repeat:
-            #Random number between 1 and 5
-            random_num = random.randint(1, 5)
-               
-            #Users Number
-            print("\n---------------------------------------------------------------")
-            user_num = int(input("Please choose a number between 1 and 5"))
-            if user_num > 5 or user_num < 1:
-                print("Please choose a number between 1 and 5; ")
-                repeat = True
-            print(random_num)
-            if user_num == random_num:
-                repeat = False
-                print("Congratulations")
-                print("+{} points".format(users_points))
-                points += users_points
+    repeat = True
+    while repeat:
+        #Random number between 1 and 5
+        random_num = random.randint(1, 5)
+           
+        #Users Number
+        print("\n---------------------------------------------------------------")
+        user_num = int(input("Please choose a number between 1 and 5"))
+        if user_num > 5 or user_num < 1:
+            print("Please choose a number between 1 and 5; ")
+            repeat = True
+        print(random_num)
+        if user_num == random_num:
+            repeat = False
+            print("Congratulations")
+            print("+{} points".format(users_points))
+            points += users_points
 
-            elif user_num != random_num:
-                repeat = False
-                print("Unlucky, u lost")
-                print("-{} points".format(users_points))
-                points -= users_points
+        elif user_num != random_num:
+            repeat = False
+            print("Unlucky, u lost")
+            print("-{} points".format(users_points))
+            points -= users_points
+
+    
+
+            
           
                            
         
@@ -129,39 +133,49 @@ def gamble_func(rounds, points):
 
 def help_func():
     """Gives information about the different game modes"""
-    print("\n---------------------------------------------------------------\n")
-    help_mode = input("""\nWhich mode would you like to learn about:\n \n(1)Classic\Panui\n \n(2)Arcade\n \n(3)Gambling\Petipeti\n \n(4)Return\Hoki\n""")
 
-    #Will explain the mode
-    if help_mode == "4":
-        #If i leave blank then it will automatically send user back to function they called from
-        print("\n") 
+    import time
+        
+    repeat = True
+    while repeat:
+        print("\n---------------------------------------------------------------\n")
+        help_mode = input("""\nWhich mode would you like to learn about:\n \n(1)Classic\Panui\n \n(2)Arcade\n \n(3)Gambling\Petipeti\n \n(4)Return\Hoki\n""")
+
+        #Will explain the mode
+        if help_mode == "4":
+            repeat = False
+            print("\nTransfering...")
+            time.sleep(2)
+            #If i leave blank then it will automatically send user back to function they called from
+            print("\n")
 
 
-    elif help_mode == "1":
-        print("""English: In this game mode you will be given 10 hard questions.
-Each question rewards you with a set amount of points.
-If you get a question wrong the game will stop and you will
-lose all your points​.""" )
-        print("""Maori: I tenei aratau kēmu ka tukuna kia 10 nga patai uaua.
-Ma ia patai te utu ki a koe me te nui o nga whaainga.
-Ki te whiwhi koe i tetahi patai hē ka mutu te kēmu ka mutu koe
-ngaro koutou tohu katoa.""")
+        elif help_mode == "1":
+            print("""\nEnglish: In this game mode you will be given 10 hard questions.
+    Each question rewards you with a set amount of points.
+    If you get a question wrong the game will stop and you will
+    lose all your points​.""" )
+            print("""\nMaori: I tenei aratau kēmu ka tukuna kia 10 nga patai uaua.
+    Ma ia patai te utu ki a koe me te nui o nga whaainga.
+    Ki te whiwhi koe i tetahi patai hē ka mutu te kēmu ka mutu koe
+    ngaro koutou tohu katoa.""")
+            time.sleep(2)
 
-    elif help_mode == "2":
-        print("""English: In this game mode you will be given 10 questions
-while being timed. You then need to answer all the questions, CORRECTLY, ​
-in order to stop the timer. You will then be awarded points dependant on the
-time you got.""")
-        print("""Maori: 
-I tenei aratau kēmu ka tukuna kia 10 nga patai
-i te wātaka. Me whakautu e koe nga whakautu katoa, tika
-kia mutu ai te taima. Ka whakawhiwhia koe ki nga tohu i runga i te
-wa kua ka koe""")
+        elif help_mode == "2":
+            print("""\nEnglish: In this game mode you will be given 10 questions
+    while being timed. You then need to answer all the questions, CORRECTLY, ​
+    in order to stop the timer. You will then be awarded points dependant on the
+    time you got.""")
+            print("""\nMaori: 
+    I tenei aratau kēmu ka tukuna kia 10 nga patai
+    i te wātaka. Me whakautu e koe nga whakautu katoa, tika
+    kia mutu ai te taima. Ka whakawhiwhia koe ki nga tohu i runga i te
+    wa kua ka koe""")
+            time.sleep(2)
 
-    elif help_mode == "3":
-        print()
-    
+        elif help_mode == "3":
+            print()
+
 
 def arcade_func(rounds, points, lives, operations):
     """Arcade Mode is a certan amount of time with rapid fire questions
@@ -205,7 +219,7 @@ time you got.
     #This starts the timer
     start = time.time()
 
-    for i in range(10):
+    for i in range(100):
         #Sets Random number between 0 and 10 for variable  
         num1 = random.randint(0, 10)
         num2 = random.randint(0, 10)
@@ -218,15 +232,17 @@ time you got.
 
         #Going to calculate the average depending on the users time and give them points
         if user_answer == real_answer:
-            print("HEY")
+            print("YOOOOOO")
+            points += 125
             correct += 1
             total += 1
-            if correct == 10:
+            if correct > 10:
                 finish = time.time()
                 elapsed = finish - start
-                print("{:.1f}".format(elapsed))
+                break
+                #print("{:.1f}".format(elapsed))
+            
         else:
-            print("BYE")
             incorrect += 1
             total += 1
 
@@ -236,7 +252,7 @@ time you got.
     print("\nCalculating Score")
     time.sleep(2)
     print("\nYour Points: {}".format(points))
-    print("Total Time: {:.1f} seconds".format(correct))
+    print("Total Time: {:.1f} seconds".format(elapsed))
     rounds -= 1
     gamble_func(rounds, points) #Calls gambling function
         
@@ -316,54 +332,45 @@ lose all your points​.
     gamble_func(rounds, points) #Calls gambling function
 
     
-    
-            
-
-def main():
-    """This is the main funtion which is going to
+def menu(points, lives, operations, rounds):
+    """This is the menu funtion which is going to
        ask the user which game mode they would like to play and
-       then take them to that mode
-    """
+       then take them to that mode"""
+    
 
     import time
 
-    #This will hold points lives and operators
-    operations = ["+", "-", "*"]
-
-
-    
-    points = 0 #FIX ME
-
-
-
-    
-    lives = 3 #During the arcade
-    rounds = 5 #The user can only play a certain amount of rounds before they have to stop
+    if rounds == 0:
+        print("""I am sorry but you have reached the
+maximum amount of rounds and it is unthealthy for you
+to continue. Please play again another time!""")
+        exit()
     
     repeat = True #Repeat question untill valid answer is input
     while True:
         print("\n---------------------------------------------------------------")
         #Asking the user which mode they would like to play
+        print(points)
         game_mode = input("\nPlease choose a game mode\n \n(1)Classic\Panui\n \n(2)Arcade\Taarua\n \n(3)Help\Awhina\n \n(4)Exit\Puta\n").lower().strip()
 
         #If statement that takes user to function dependet on the mode they chose
         if game_mode == "1" or game_mode == "classic" or game_mode == "panui":
             print("\nTransfering...")
             time.sleep(2)
-            classic_func(rounds, points, operations)
-            repeat = False
+            points = classic_func(rounds, points, operations)
+            repeat = True
             
         elif game_mode == "2" or game_mode == "arcade" or game_mode == "taarua":
             print("\nTransfering...")
             time.sleep(2)
             arcade_func(rounds, points, lives, operations)
-            repeat = False
+            repeat = True
 
         elif game_mode == "3" or game_mode == "help" or game_mode == "awhina":
             print("\nTransfering...")
             time.sleep(2)
             help_func()
-            repeat = False
+            repeat = True
 
         elif game_mode == "4" or game_mode == exit or game_mode == "puta":
             print("Thanks for playing!")
@@ -371,6 +378,23 @@ def main():
 
         else:
             print("\nPlease input a valid mode")
+            
+
+def main():
+    """This is the main funtion which holds variables"""
+
+    import time
+    #This will hold points lives and operators
+    operations = ["+", "-", "*"]
+
+
+    points = 0 #FIX ME
+    lives = 3 #During the arcade
+    rounds = 5 #The user can only play a certain amount of rounds before they have to stop
+    
+    menu(points, lives, operations, rounds)
+    
+   
 
     
      
