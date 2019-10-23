@@ -358,7 +358,7 @@ to continue. Please play again another time!""")
     while True:
         print("\n---------------------------------------------------------------")
         #Asking the user which mode they would like to play
-        print(points)
+        
         game_mode = input("\nPlease choose a game mode\n \n(1)Classic\Panui\n \n(2)Arcade\Taarua\n \n(3)Help\Awhina\n \n(4)Exit\Puta\n").lower().strip()
 
         #If statement that takes user to function dependet on the mode they chose
@@ -396,7 +396,7 @@ def main():
     operations = ["+", "-", "*"]
 
 
-    points = 0 #FIX ME
+    points = 0 
     lives = 3 #During the arcade
     rounds = 5 #The user can only play a certain amount of rounds before they have to stop
     
