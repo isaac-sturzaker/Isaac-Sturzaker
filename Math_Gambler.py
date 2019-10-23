@@ -174,7 +174,16 @@ def help_func():
             time.sleep(2)
 
         elif help_mode == "3":
-            print()
+            print("""\nEnglish: In this gambling game you will choose how many
+    you would like to gamble. The game wil then ask you to pick a number
+    between 1 and 5. If you get the number right you will get your points
+    doubled. If you get this wrong you will lose thos points you gambled.""")
+            print("""\nMaori: 
+    I tenei kēmu petipeti ka whiriwhiri koe kia hia
+    pai ki te petipeti koe. Ka kii atu koe ki te tiki i te nama
+    i waenga i te 1 me te 5. Mena ka whiwhihia e koe te whika ka riro koe i ou tohu
+    takirua. Mena ka he koe i tenei he ka ngaro nga tohu a koe i poipoihia e koe""")
+            time.sleep(2)
 
 
 def arcade_func(rounds, points, lives, operations):
@@ -232,7 +241,6 @@ time you got.
 
         #Going to calculate the average depending on the users time and give them points
         if user_answer == real_answer:
-            print("YOOOOOO")
             points += 125
             correct += 1
             total += 1
